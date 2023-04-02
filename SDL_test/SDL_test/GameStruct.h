@@ -11,6 +11,7 @@
 #include <SDL2/SDL.h>
 
 typedef struct {
-        
-} Game;
+    int x;
+    int y;
+} Position;
 #endif /* GameStruct_h */
