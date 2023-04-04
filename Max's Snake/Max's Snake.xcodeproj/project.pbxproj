@@ -18,6 +18,8 @@
 /* Begin PBXFileReference section */
 		1295ED6F29DB5C44005BB82A /* description.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = description.ttf; sourceTree = "<group>"; };
 		1295ED7029DB5C44005BB82A /* title.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = title.ttf; sourceTree = "<group>"; };
+		12B5BC1829DC35F7003F6087 /* DynamicArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DynamicArray.h; sourceTree = "<group>"; };
+		12B5BC1A29DC3871003F6087 /* Block.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Block.h; sourceTree = "<group>"; };
 		12D8B56A29DA0B8B005DE5A1 /* Max's Snake.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Max's Snake.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		12D8B57029DA0B8B005DE5A1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12D8B57729DA0B8B005DE5A1 /* Max_s_Snake.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Max_s_Snake.entitlements; sourceTree = "<group>"; };
@@ -63,8 +65,10 @@
 				12D8B57029DA0B8B005DE5A1 /* Assets.xcassets */,
 				1295ED7029DB5C44005BB82A /* title.ttf */,
 				1295ED6F29DB5C44005BB82A /* description.ttf */,
+				12B5BC1A29DC3871003F6087 /* Block.h */,
 				12D8B57729DA0B8B005DE5A1 /* Max_s_Snake.entitlements */,
 				12D8B57D29DA0BB3005DE5A1 /* main.c */,
+				12B5BC1829DC35F7003F6087 /* DynamicArray.h */,
 				12D8B58629DA157B005DE5A1 /* StartScreen.h */,
 			);
 			path = "Max's Snake";

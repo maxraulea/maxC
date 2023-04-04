@@ -9,14 +9,17 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <unistd.h>
 
 #include <SDL2/SDL.h>
 #include "StartScreen.h"
+#include "DynamicArray.h"
 
 int main(int argc, char* argv[]){
     
     const int windowHeight = 750;
     const int windowWidth = 600;
+    char currentDirection = '\0';
     
     if(SDL_Init(SDL_INIT_VIDEO) < 0 ){
         printf("sdl could not initialised: %s", SDL_GetError());
@@ -39,27 +42,69 @@ int main(int argc, char* argv[]){
     // we first call the start game function which will ask the user to press enter to start the game
     // if the user wants to play the game 0 is returned
     // if the user does not want to play or an error occured an integer != 0 is returned
-    if(StartGame(Renderer, windowWidth/2, windowHeight/2) != 0){
+    if(StartGame(Renderer, windowWidth/2, windowHeight/2, 40) != 0){
         return 1;
     }
+    
+    // now the game can begin!
+    
+    // we clear the start screen
+    SDL_RenderClear(Renderer);
+    
     SDL_Event e;
+    
+    SDL_Rect snakePart;
+        snakePart.h = 10;
+        snakePart.w = 10;
+        snakePart.x = windowWidth/2;
+        snakePart.y = windowHeight/2;
+    
     bool quit = false;
      
     while (!quit){
         while (SDL_PollEvent(&e)){
-            if (e.type == SDL_QUIT){
-                quit = true;
+            switch (e.key.keysym.sym) {
+                case SDLK_a:
+                    currentDirection = 'l';
+                    break;
+                case SDLK_d:
+                    currentDirection = 'r';
+                    break;
+                case SDLK_w:
+                    currentDirection = 'u';
+                    break;
+                case SDLK_s:
+                    currentDirection = 'd';
+                    break;
+                case SDLK_ESCAPE:
+                    quit = true;
+                    break;
+                default:
+                    break;
             }
-            if (e.type == SDL_KEYDOWN){
-                quit = true;
-            }
-            if (e.type == SDL_MOUSEBUTTONDOWN){
-                quit = true;
-            }
-
         }
         
+        switch (currentDirection) {
+            case 'l':
+                snakePart.x -= 10;
+                break;
+            case 'r':
+                snakePart.x += 10;
+                break;
+            case 'u':
+                snakePart.y -= 10;
+                break;
+            case 'd':
+                snakePart.y += 10;
+                break;
+            default:
+                break;
+        }
+        
+        usleep(100000);
         SDL_RenderClear(Renderer);
+        SDL_SetRenderDrawColor(Renderer, 255, 255, 255, 255);
+        SDL_RenderFillRect(Renderer, &snakePart);
         SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
         SDL_RenderPresent(Renderer);
     }

@@ -13,14 +13,14 @@
 #include <SDL2/SDL.h>
 #include <SDL2_ttf/SDL_ttf.h>
 
-int StartGame(SDL_Renderer *Renderer, int xMiddle, int yMiddle){
+int StartGame(SDL_Renderer *Renderer, int xMiddle, int yMiddle, int Fontsize){
     if(TTF_Init() < 0){
         return 1;
     }
     
     SDL_Color White = {255, 255, 255};
-    TTF_Font *title = TTF_OpenFont("title.ttf", 30);
-    TTF_Font *description = TTF_OpenFont("description.ttf", 15);
+    TTF_Font *title = TTF_OpenFont("title.ttf", Fontsize);
+    TTF_Font *description = TTF_OpenFont("description.ttf", Fontsize/2.5);
     if (!title || !description){
         return 1;
     }
@@ -35,7 +35,7 @@ int StartGame(SDL_Renderer *Renderer, int xMiddle, int yMiddle){
         titleBox.h = titleText->h;
         titleBox.w = titleText->w;
         titleBox.x = xMiddle - titleText->w/2;
-        titleBox.y = yMiddle;
+        titleBox.y = yMiddle - titleText->h;
     
     SDL_Rect descriptionBox;
         descriptionBox.h = descriptionText->h;
@@ -47,7 +47,7 @@ int StartGame(SDL_Renderer *Renderer, int xMiddle, int yMiddle){
     bool quit = false;
      
     while (!quit){
-        sleep(1);
+        usleep(400000);
         SDL_RenderClear(Renderer);
         SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
         SDL_RenderCopy(Renderer, titleTexture, NULL, &titleBox);
@@ -59,7 +59,7 @@ int StartGame(SDL_Renderer *Renderer, int xMiddle, int yMiddle){
                 return 0;
             }
         }
-        sleep(1);
+        usleep(400000);
         SDL_RenderCopy(Renderer, descriptionTexture, NULL, &descriptionBox);
         SDL_RenderPresent(Renderer);
     }
