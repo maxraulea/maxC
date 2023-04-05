@@ -19,7 +19,7 @@ int main(int argc, char* argv[]){
     
     const int windowHeight = 750;
     const int windowWidth = 600;
-    char currentDirection = '\0';
+    SDL_Rect snakePart;
     
     if(SDL_Init(SDL_INIT_VIDEO) < 0 ){
         printf("sdl could not initialised: %s", SDL_GetError());
@@ -52,29 +52,33 @@ int main(int argc, char* argv[]){
     SDL_RenderClear(Renderer);
     
     SDL_Event e;
+    dArray Snake;
+    initArray(&Snake, 1);
+    Snake.block[0].x = windowWidth/2;
+    Snake.block[0].y = windowHeight/2;
     
-    SDL_Rect snakePart;
-        snakePart.h = 10;
-        snakePart.w = 10;
-        snakePart.x = windowWidth/2;
-        snakePart.y = windowHeight/2;
     
     bool quit = false;
      
     while (!quit){
+        
+        for(int i = Snake.Lentgh; i > 0; i--){
+            Snake.block[i] = Snake.block[i-1];
+        }
+        
         while (SDL_PollEvent(&e)){
             switch (e.key.keysym.sym) {
                 case SDLK_a:
-                    currentDirection = 'l';
+                    Snake.block[0].direction = 'l';
                     break;
                 case SDLK_d:
-                    currentDirection = 'r';
+                    Snake.block[0].direction = 'r';
                     break;
                 case SDLK_w:
-                    currentDirection = 'u';
+                    Snake.block[0].direction = 'u';
                     break;
                 case SDLK_s:
-                    currentDirection = 'd';
+                    Snake.block[0].direction = 'd';
                     break;
                 case SDLK_ESCAPE:
                     quit = true;
@@ -84,29 +88,50 @@ int main(int argc, char* argv[]){
             }
         }
         
-        switch (currentDirection) {
+        switch (Snake.block[0].direction) {
             case 'l':
-                snakePart.x -= 10;
+                Snake.block[0].x -= 10;
                 break;
             case 'r':
-                snakePart.x += 10;
+                Snake.block[0].x += 10;
                 break;
             case 'u':
-                snakePart.y -= 10;
+                Snake.block[0].y -= 10;
                 break;
             case 'd':
-                snakePart.y += 10;
+                Snake.block[0].y += 10;
                 break;
             default:
                 break;
         }
         
-        usleep(100000);
+        
+        usleep(50000);
         SDL_RenderClear(Renderer);
         SDL_SetRenderDrawColor(Renderer, 255, 255, 255, 255);
-        SDL_RenderFillRect(Renderer, &snakePart);
-        SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
+        for(int i = 0; i < Snake.Lentgh; i++){
+            
+                snakePart.h = 10;
+                snakePart.w = 10;
+                snakePart.x = Snake.block[i].x;
+                snakePart.y = Snake.block[i].y;
+            
+            SDL_RenderFillRect(Renderer, &snakePart);
+            SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
+        }
         SDL_RenderPresent(Renderer);
+        
+        if(5 > Snake.Lentgh){
+            for (int i = 0; i < 5; i++){
+                AppendBlock(&Snake);
+            }
+        }
+        else{
+            printf("position 2nd block %d, %d \n",Snake.block[1].x, Snake.block[1].y);
+            printf("position 3rd block %d, %d \n",Snake.block[2].x, Snake.block[2].y);
+            printf("position 4th block %d, %d \n",Snake.block[3].x, Snake.block[3].y);
+            printf("position 5th block %d, %d \n",Snake.block[4].x, Snake.block[4].y);
+        }
     }
     
     SDL_DestroyWindow(View);

@@ -14,18 +14,30 @@
 typedef struct{
     Block *block;
     int Size;
-    int Used;
+    int Lentgh;
 } dArray;
 
 void initArray(dArray *blocks, int Size){
     blocks->block = malloc(Size * sizeof(Block));
     blocks->Size = Size;
-    blocks->Used = 0;
+    blocks->Lentgh = 1;
 }
 
-void AppendBlock(dArray *blocks, Block block){
-    if (blocks->Used > blocks->Size){
-        
+void AppendBlock(dArray *blocks){
+    Block block;
+    block.direction = '\0';
+    block.x = 0;
+    block.y = 0;
+    blocks->Lentgh += 1;
+    if (blocks->Lentgh > blocks->Size){
+        blocks->Size *= 3/2 + 8;
+        blocks->block = realloc(blocks->block, blocks->Size * sizeof(Block));
     }
+    blocks->block[blocks->Lentgh] = block;
 }
+
+
+/**TODO make a function to free allocated memory**/
+
+
 #endif /* DynamicArray_h */
