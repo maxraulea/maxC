@@ -105,33 +105,44 @@ int main(int argc, char* argv[]){
                 break;
         }
         
+        // out of bounds
+        if (Snake.block[0].y < 0 || Snake.block[0].y > windowHeight){
+            quit = true;
+        }
+        
+        if (Snake.block[0].x < 0 || Snake.block[0].x > windowWidth){
+            quit = true;
+        }
+        
+        // hit it self
         
         usleep(50000);
         SDL_RenderClear(Renderer);
         SDL_SetRenderDrawColor(Renderer, 255, 255, 255, 255);
         for(int i = 0; i < Snake.Lentgh; i++){
             
-                snakePart.h = 10;
-                snakePart.w = 10;
-                snakePart.x = Snake.block[i].x;
-                snakePart.y = Snake.block[i].y;
-            
+            snakePart.h = 10;
+            snakePart.w = 10;
+            snakePart.x = Snake.block[i].x;
+            snakePart.y = Snake.block[i].y;
+    
             SDL_RenderFillRect(Renderer, &snakePart);
-            SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
         }
+        
+        SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
         SDL_RenderPresent(Renderer);
         
         if(5 > Snake.Lentgh){
             for (int i = 0; i < 5; i++){
                 AppendBlock(&Snake);
             }
-        }
+        }/*
         else{
             printf("position 2nd block %d, %d \n",Snake.block[1].x, Snake.block[1].y);
             printf("position 3rd block %d, %d \n",Snake.block[2].x, Snake.block[2].y);
             printf("position 4th block %d, %d \n",Snake.block[3].x, Snake.block[3].y);
             printf("position 5th block %d, %d \n",Snake.block[4].x, Snake.block[4].y);
-        }
+        }*/
     }
     
     SDL_DestroyWindow(View);
