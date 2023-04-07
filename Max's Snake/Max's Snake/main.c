@@ -9,17 +9,21 @@
 
 #include <stdio.h>
 #include <unistd.h>
+#include <time.h>
 
 #include <SDL2/SDL.h>
 #include "StartScreen.h"
 #include "DynamicArray.h"
 #include "GameOver.h"
+#include "Fruit.h"
+
 
 int main(int argc, char* argv[]){
     
     const int windowHeight = 800;
     const int windowWidth = 600;
     SDL_Rect snakePart;
+    srand((unsigned int)time(NULL));
     
     if(SDL_Init(SDL_INIT_VIDEO) < 0 ){
         printf("sdl could not initialised: %s", SDL_GetError());
@@ -58,6 +62,8 @@ int main(int argc, char* argv[]){
     Snake.block[0].y = windowHeight/2;
     Snake.block[0].direction = 'u';
     
+    Fruit fruit;
+    fruit = InitFruit(windowHeight, windowWidth);
     
     int quit = 0;
      
@@ -128,17 +134,11 @@ int main(int argc, char* argv[]){
         
         SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
         SDL_RenderPresent(Renderer);
-        
+     
         if(10 > Snake.Lentgh){
             for (int i = 0; i < 5; i++){
                 AppendBlock(&Snake);
             }
-        }
-        else{
-            printf("position 1st block %d, %d \n",Snake.block[0].x, Snake.block[0].y);
-            //printf("position 3rd block %d, %d \n",Snake.block[2].x, Snake.block[2].y);
-            //printf("position 4th block %d, %d \n",Snake.block[3].x, Snake.block[3].y);
-            //printf("position 5th block %d, %d \n",Snake.block[4].x, Snake.block[4].y);
         }
     }
     
