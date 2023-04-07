@@ -17,7 +17,7 @@
 
 int main(int argc, char* argv[]){
     
-    const int windowHeight = 750;
+    const int windowHeight = 800;
     const int windowWidth = 600;
     SDL_Rect snakePart;
     
@@ -56,17 +56,20 @@ int main(int argc, char* argv[]){
     initArray(&Snake, 1);
     Snake.block[0].x = windowWidth/2;
     Snake.block[0].y = windowHeight/2;
+    Snake.block[0].direction = 'u';
     
     
     bool quit = false;
      
     while (!quit){
-        
-        for(int i = Snake.Lentgh; i > 0; i--){
-            Snake.block[i] = Snake.block[i-1];
+        if (Snake.Lentgh > 1){
+            for(int i = Snake.Lentgh; i > 0; i--){
+                Snake.block[i] = Snake.block[i-1];
+            }
         }
         
-        while (SDL_PollEvent(&e)){
+        if (SDL_PollEvent(&e)){
+            printf("key pressed \n");
             switch (e.key.keysym.sym) {
                 case SDLK_a:
                     Snake.block[0].direction = 'l';
@@ -113,10 +116,16 @@ int main(int argc, char* argv[]){
         if (Snake.block[0].x < 0 || Snake.block[0].x > windowWidth){
             quit = true;
         }
-        
+    
         // hit it self
+        for (int i = 1; i < Snake.Lentgh; i++){
+            if (Snake.block[0].x == Snake.block[i].x && Snake.block[0].y == Snake.block[i].y){
+                quit = true;
+            }
+        }
         
         usleep(50000);
+        printf("move snake \n");
         SDL_RenderClear(Renderer);
         SDL_SetRenderDrawColor(Renderer, 255, 255, 255, 255);
         for(int i = 0; i < Snake.Lentgh; i++){
@@ -132,17 +141,17 @@ int main(int argc, char* argv[]){
         SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
         SDL_RenderPresent(Renderer);
         
-        if(5 > Snake.Lentgh){
+        if(10 > Snake.Lentgh){
             for (int i = 0; i < 5; i++){
                 AppendBlock(&Snake);
             }
-        }/*
+        }
         else{
-            printf("position 2nd block %d, %d \n",Snake.block[1].x, Snake.block[1].y);
-            printf("position 3rd block %d, %d \n",Snake.block[2].x, Snake.block[2].y);
-            printf("position 4th block %d, %d \n",Snake.block[3].x, Snake.block[3].y);
-            printf("position 5th block %d, %d \n",Snake.block[4].x, Snake.block[4].y);
-        }*/
+            printf("position 1st block %d, %d \n",Snake.block[0].x, Snake.block[0].y);
+            //printf("position 3rd block %d, %d \n",Snake.block[2].x, Snake.block[2].y);
+            //printf("position 4th block %d, %d \n",Snake.block[3].x, Snake.block[3].y);
+            //printf("position 5th block %d, %d \n",Snake.block[4].x, Snake.block[4].y);
+        }
     }
     
     SDL_DestroyWindow(View);
