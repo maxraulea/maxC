@@ -8,12 +8,12 @@
 //
 
 #include <stdio.h>
-#include <stdbool.h>
 #include <unistd.h>
 
 #include <SDL2/SDL.h>
 #include "StartScreen.h"
 #include "DynamicArray.h"
+#include "GameOver.h"
 
 int main(int argc, char* argv[]){
     
@@ -59,7 +59,7 @@ int main(int argc, char* argv[]){
     Snake.block[0].direction = 'u';
     
     
-    bool quit = false;
+    int quit = 0;
      
     while (!quit){
         if (Snake.Lentgh > 1){
@@ -84,7 +84,7 @@ int main(int argc, char* argv[]){
                     Snake.block[0].direction = 'd';
                     break;
                 case SDLK_ESCAPE:
-                    quit = true;
+                    quit = 1;
                     break;
                 default:
                     break;
@@ -108,20 +108,8 @@ int main(int argc, char* argv[]){
                 break;
         }
         
-        // out of bounds
-        if (Snake.block[0].y < 0 || Snake.block[0].y > windowHeight){
-            quit = true;
-        }
-        
-        if (Snake.block[0].x < 0 || Snake.block[0].x > windowWidth){
-            quit = true;
-        }
-    
-        // hit it self
-        for (int i = 1; i < Snake.Lentgh; i++){
-            if (Snake.block[0].x == Snake.block[i].x && Snake.block[0].y == Snake.block[i].y){
-                quit = true;
-            }
+        if(IsGameOver(&Snake, windowHeight, windowWidth)){
+            quit = 1;
         }
         
         usleep(50000);

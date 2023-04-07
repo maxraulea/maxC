@@ -6,7 +6,6 @@
 //
 
 #include <unistd.h>
-#include <stdbool.h>
 
 #include <SDL2/SDL.h>
 #include <SDL2_ttf/SDL_ttf.h>
@@ -44,7 +43,7 @@ int StartGame(SDL_Renderer *Renderer, int xMiddle, int yMiddle, int Fontsize){
         descriptionBox.y = yMiddle + 50;
     
     SDL_Event e;
-    bool quit = false;
+    int quit = 0;
      
     while (!quit){
         usleep(400000);
@@ -55,7 +54,7 @@ int StartGame(SDL_Renderer *Renderer, int xMiddle, int yMiddle, int Fontsize){
         
         while (SDL_PollEvent(&e)){
             if (e.key.keysym.sym == SDLK_RETURN){
-                quit = true;
+                quit = 1;
                 return 0;
             }
         }

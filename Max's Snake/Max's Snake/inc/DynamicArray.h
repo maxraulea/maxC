@@ -20,5 +20,6 @@ void initArray(dArray *blocks, int Size);
 
 void AppendBlock(dArray *blocks);
 
+/**TODO make a function to free allocated memory**/
 
 #endif /* DynamicArray_h */
