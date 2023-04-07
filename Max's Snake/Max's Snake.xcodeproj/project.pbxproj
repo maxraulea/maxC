@@ -10,6 +10,7 @@
 		12754EB529E000FE00BD9965 /* DynamicArray.c in Sources */ = {isa = PBXBuildFile; fileRef = 12754EB429E000FE00BD9965 /* DynamicArray.c */; };
 		12754EB729E0011500BD9965 /* GameOver.c in Sources */ = {isa = PBXBuildFile; fileRef = 12754EB629E0011500BD9965 /* GameOver.c */; };
 		12754EB929E00B1600BD9965 /* StartScreen.c in Sources */ = {isa = PBXBuildFile; fileRef = 12754EB829E00B1600BD9965 /* StartScreen.c */; };
+		12754EBB29E01F7B00BD9965 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 12754EBA29E01F7B00BD9965 /* .gitignore */; };
 		1295ED7129DB5C44005BB82A /* description.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1295ED6F29DB5C44005BB82A /* description.ttf */; };
 		1295ED7229DB5C44005BB82A /* title.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1295ED7029DB5C44005BB82A /* title.ttf */; };
 		12D8B57129DA0B8B005DE5A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12D8B57029DA0B8B005DE5A1 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 		12754EB429E000FE00BD9965 /* DynamicArray.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = DynamicArray.c; sourceTree = "<group>"; };
 		12754EB629E0011500BD9965 /* GameOver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GameOver.c; sourceTree = "<group>"; };
 		12754EB829E00B1600BD9965 /* StartScreen.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = StartScreen.c; sourceTree = "<group>"; };
+		12754EBA29E01F7B00BD9965 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		1295ED6F29DB5C44005BB82A /* description.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = description.ttf; sourceTree = "<group>"; };
 		1295ED7029DB5C44005BB82A /* title.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = title.ttf; sourceTree = "<group>"; };
 		12B5BC1829DC35F7003F6087 /* DynamicArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DynamicArray.h; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				12D8B57029DA0B8B005DE5A1 /* Assets.xcassets */,
+				12754EBA29E01F7B00BD9965 /* .gitignore */,
 				1295ED7029DB5C44005BB82A /* title.ttf */,
 				1295ED6F29DB5C44005BB82A /* description.ttf */,
 				12B5BC1A29DC3871003F6087 /* Block.h */,
@@ -151,6 +154,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12754EBB29E01F7B00BD9965 /* .gitignore in Resources */,
 				12D8B57129DA0B8B005DE5A1 /* Assets.xcassets in Resources */,
 				1295ED7129DB5C44005BB82A /* description.ttf in Resources */,
 				1295ED7229DB5C44005BB82A /* title.ttf in Resources */,
