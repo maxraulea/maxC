@@ -8,25 +8,30 @@
 //
 
 #include <stdio.h>
-#include <stdbool.h>
 #include <unistd.h>
+#include <time.h>
 
 #include <SDL2/SDL.h>
 #include "StartScreen.h"
 #include "DynamicArray.h"
+#include "GameOver.h"
+#include "Fruit.h"
+#include "CollisionFruit.h"
+
 
 int main(int argc, char* argv[]){
     
-    const int windowHeight = 800;
-    const int windowWidth = 600;
+    const int WINDOW_HEIGHT = 800;
+    const int WINDOW_WIDTH = 600;
     SDL_Rect snakePart;
+    srand((unsigned int)time(NULL));
     
     if(SDL_Init(SDL_INIT_VIDEO) < 0 ){
         printf("sdl could not initialised: %s", SDL_GetError());
         return 1;
     }
     
-    SDL_Window *View = SDL_CreateWindow("Game", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, windowWidth, windowHeight, 0);
+    SDL_Window *View = SDL_CreateWindow("Game", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WINDOW_WIDTH, WINDOW_HEIGHT, 0);
     if(!View){
         printf("sdl could not create window");
         return 1;
@@ -42,7 +47,7 @@ int main(int argc, char* argv[]){
     // we first call the start game function which will ask the user to press enter to start the game
     // if the user wants to play the game 0 is returned
     // if the user does not want to play or an error occured an integer != 0 is returned
-    if(StartGame(Renderer, windowWidth/2, windowHeight/2, 40) != 0){
+    if(StartGame(Renderer, WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 40) != 0){
         return 1;
     }
     
@@ -52,18 +57,20 @@ int main(int argc, char* argv[]){
     SDL_RenderClear(Renderer);
     
     SDL_Event e;
-    dArray Snake;
-    initArray(&Snake, 1);
-    Snake.block[0].x = windowWidth/2;
-    Snake.block[0].y = windowHeight/2;
+    dynamicArray Snake;
+    InitArray(&Snake);
+    Snake.block[0].x = WINDOW_WIDTH/2;
+    Snake.block[0].y = WINDOW_HEIGHT/2;
     Snake.block[0].direction = 'u';
     
+    Fruit fruit;
+    fruit = InitFruit(WINDOW_HEIGHT, WINDOW_WIDTH);
     
-    bool quit = false;
+    int quit = 0;
      
     while (!quit){
         if (Snake.Lentgh > 1){
-            for(int i = Snake.Lentgh; i > 0; i--){
+            for(int i = Snake.Lentgh - 1; i > 0; i--){
                 Snake.block[i] = Snake.block[i-1];
             }
         }
@@ -84,7 +91,7 @@ int main(int argc, char* argv[]){
                     Snake.block[0].direction = 'd';
                     break;
                 case SDLK_ESCAPE:
-                    quit = true;
+                    quit = 1;
                     break;
                 default:
                     break;
@@ -108,20 +115,8 @@ int main(int argc, char* argv[]){
                 break;
         }
         
-        // out of bounds
-        if (Snake.block[0].y < 0 || Snake.block[0].y > windowHeight){
-            quit = true;
-        }
-        
-        if (Snake.block[0].x < 0 || Snake.block[0].x > windowWidth){
-            quit = true;
-        }
-    
-        // hit it self
-        for (int i = 1; i < Snake.Lentgh; i++){
-            if (Snake.block[0].x == Snake.block[i].x && Snake.block[0].y == Snake.block[i].y){
-                quit = true;
-            }
+        if(IsGameOver(&Snake, WINDOW_HEIGHT, WINDOW_WIDTH)){
+            quit = 1;
         }
         
         usleep(50000);
@@ -137,20 +132,19 @@ int main(int argc, char* argv[]){
     
             SDL_RenderFillRect(Renderer, &snakePart);
         }
+        snakePart.x = fruit.x;
+        snakePart.y = fruit.y;
+        SDL_RenderFillRect(Renderer, &snakePart);
         
         SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
         SDL_RenderPresent(Renderer);
-        
-        if(10 > Snake.Lentgh){
-            for (int i = 0; i < 5; i++){
-                AppendBlock(&Snake);
-            }
+        if(Snake.Lentgh < 99){
+            AppendBlock(&Snake);
         }
-        else{
-            printf("position 1st block %d, %d \n",Snake.block[0].x, Snake.block[0].y);
-            //printf("position 3rd block %d, %d \n",Snake.block[2].x, Snake.block[2].y);
-            //printf("position 4th block %d, %d \n",Snake.block[3].x, Snake.block[3].y);
-            //printf("position 5th block %d, %d \n",Snake.block[4].x, Snake.block[4].y);
+     
+        if(IsCollisionWithFruit(&Snake, fruit)){
+            fruit =  InitFruit(WINDOW_HEIGHT, WINDOW_WIDTH);
+            AppendBlock(&Snake);
         }
     }
     

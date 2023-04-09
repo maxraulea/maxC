@@ -8,5 +8,8 @@
 #ifndef GameOver_h
 #define GameOver_h
 
+#include "DynamicArray.h"
+
+int IsGameOver(dynamicArray *snake, int maxHeight, int maxWidth);
 
 #endif /* GameOver_h */

@@ -14,11 +14,12 @@ typedef struct{
     Block *block;
     int Size;
     int Lentgh;
-} dArray;
+} dynamicArray;
 
-void initArray(dArray *blocks, int Size);
+dynamicArray* InitArray(dynamicArray *blocks);
 
-void AppendBlock(dArray *blocks);
+dynamicArray* AppendBlock(dynamicArray *blocks);
 
+/**TODO make a function to free allocated memory**/
 
 #endif /* DynamicArray_h */
