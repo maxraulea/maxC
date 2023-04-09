@@ -7,7 +7,7 @@
 
 #include "CollisionFruit.h"
 
-int IsCollisionWithFruit(dArray *snake, Fruit fruit){
+int IsCollisionWithFruit(dynamicArray *snake, Fruit fruit){
     
     if (snake->block[0].x == fruit.x && snake->block[0].y == fruit.y){
         return 1;

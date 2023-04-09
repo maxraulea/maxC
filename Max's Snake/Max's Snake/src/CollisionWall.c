@@ -7,7 +7,7 @@
 
 #include "CollisionWall.h"
 
-int IsCollisionWithWall(dArray *snake, int maxHeight, int maxWidth){
+int IsCollisionWithWall(dynamicArray *snake, int maxHeight, int maxWidth){
     
     if (snake->block[0].y < 0 || snake->block[0].y > maxHeight){
         return 1;

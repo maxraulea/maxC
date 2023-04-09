@@ -9,7 +9,7 @@
 #include "CollisionSelf.h"
 #include "CollisionWall.h"
 
-int IsGameOver(dArray *snake, int maxHeight, int maxWidth){
+int IsGameOver(dynamicArray *snake, int maxHeight, int maxWidth){
     
     if(IsCollisionWithSelf(snake) || IsCollisionWithWall(snake, maxHeight, maxWidth)){
         return 1;

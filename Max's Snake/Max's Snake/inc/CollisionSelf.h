@@ -10,6 +10,6 @@
 
 #include "DynamicArray.h"
 
-int IsCollisionWithSelf(dArray *snake);
+int IsCollisionWithSelf(dynamicArray *snake);
 
 #endif /* CollisionSelf_h */

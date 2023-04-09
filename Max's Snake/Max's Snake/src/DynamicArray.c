@@ -11,7 +11,7 @@
 
 const int MEM_BATCH_SIZE = 32;
 
-dArray* initArray(dArray *blocks){
+dynamicArray* InitArray(dynamicArray *blocks){
     if(!(blocks->block = malloc(MEM_BATCH_SIZE * sizeof(Block)))){
         return NULL;
     }
@@ -20,14 +20,14 @@ dArray* initArray(dArray *blocks){
     return blocks;
 }
 
-dArray* AppendBlock(dArray *blocks){
+dynamicArray* AppendBlock(dynamicArray *blocks){
     
     Block block;
     block.direction = '\0';
     block.x = 0;
     block.y = 0;
         
-    if (blocks->Size - blocks->Lentgh - 1 < 1){
+    if (blocks->Size - blocks->Lentgh < 1){
         if(!(blocks->block = realloc(blocks->block, (blocks->Size + MEM_BATCH_SIZE) * sizeof(Block)))){
             return NULL;
         }

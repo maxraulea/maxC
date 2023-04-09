@@ -10,6 +10,6 @@
 
 #include "DynamicArray.h"
 
-int IsGameOver(dArray *snake, int maxHeight, int maxWidth);
+int IsGameOver(dynamicArray *snake, int maxHeight, int maxWidth);
 
 #endif /* GameOver_h */

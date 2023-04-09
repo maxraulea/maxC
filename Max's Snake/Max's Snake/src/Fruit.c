@@ -12,15 +12,14 @@ Fruit InitFruit(int maxHeight, int  maxWidth){
     
     Fruit fruit;
     
-    int x = rand() % maxWidth;
-    int y = rand() % maxHeight;
+    int xPosition = rand() % (maxWidth - 20);
+    int yPosition = rand() % (maxHeight - 20);
     
-    x -= x % 10;
-    y -= y % 10;
+    xPosition -= xPosition % 10;
+    yPosition -= yPosition % 10;
     
-    fruit.x = x;
-    fruit.y = y;
+    fruit.x = xPosition + 10;
+    fruit.y = yPosition + 10;
     
-    printf("fruit x: %d, y: %d \n", x, y);
     return fruit;
 }

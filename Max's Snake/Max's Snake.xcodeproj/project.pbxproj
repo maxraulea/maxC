@@ -14,6 +14,7 @@
 		12754ECA29E030A200BD9965 /* CollisionSelf.c in Sources */ = {isa = PBXBuildFile; fileRef = 12754EC929E030A200BD9965 /* CollisionSelf.c */; };
 		12754ECD29E0364300BD9965 /* Fruit.c in Sources */ = {isa = PBXBuildFile; fileRef = 12754ECC29E0364300BD9965 /* Fruit.c */; };
 		12754ED029E0365B00BD9965 /* CollisionFruit.c in Sources */ = {isa = PBXBuildFile; fileRef = 12754ECF29E0365B00BD9965 /* CollisionFruit.c */; };
+		12754ED529E3516C00BD9965 /* PrintFruit.c in Sources */ = {isa = PBXBuildFile; fileRef = 12754ED429E3516C00BD9965 /* PrintFruit.c */; };
 		1295ED7129DB5C44005BB82A /* description.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1295ED6F29DB5C44005BB82A /* description.ttf */; };
 		1295ED7229DB5C44005BB82A /* title.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1295ED7029DB5C44005BB82A /* title.ttf */; };
 		12D8B57129DA0B8B005DE5A1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12D8B57029DA0B8B005DE5A1 /* Assets.xcassets */; };
@@ -34,6 +35,8 @@
 		12754ECC29E0364300BD9965 /* Fruit.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Fruit.c; sourceTree = "<group>"; };
 		12754ECE29E0365B00BD9965 /* CollisionFruit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollisionFruit.h; sourceTree = "<group>"; };
 		12754ECF29E0365B00BD9965 /* CollisionFruit.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = CollisionFruit.c; sourceTree = "<group>"; };
+		12754ED329E3516C00BD9965 /* PrintFruit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrintFruit.h; sourceTree = "<group>"; };
+		12754ED429E3516C00BD9965 /* PrintFruit.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = PrintFruit.c; sourceTree = "<group>"; };
 		1295ED6F29DB5C44005BB82A /* description.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = description.ttf; sourceTree = "<group>"; };
 		1295ED7029DB5C44005BB82A /* title.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = title.ttf; sourceTree = "<group>"; };
 		12B5BC1829DC35F7003F6087 /* DynamicArray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DynamicArray.h; sourceTree = "<group>"; };
@@ -71,6 +74,7 @@
 				12754ECF29E0365B00BD9965 /* CollisionFruit.c */,
 				12754ECC29E0364300BD9965 /* Fruit.c */,
 				12754EC929E030A200BD9965 /* CollisionSelf.c */,
+				12754ED429E3516C00BD9965 /* PrintFruit.c */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -87,6 +91,7 @@
 		12754EC229E02FA100BD9965 /* inc */ = {
 			isa = PBXGroup;
 			children = (
+				12754ED329E3516C00BD9965 /* PrintFruit.h */,
 				12B5BC1A29DC3871003F6087 /* Block.h */,
 				12B5BC1B29DEF54D003F6087 /* GameOver.h */,
 				12B5BC1829DC35F7003F6087 /* DynamicArray.h */,
@@ -213,6 +218,7 @@
 				12D8B57E29DA0BB3005DE5A1 /* main.c in Sources */,
 				12754EB729E0011500BD9965 /* GameOver.c in Sources */,
 				12754ECA29E030A200BD9965 /* CollisionSelf.c in Sources */,
+				12754ED529E3516C00BD9965 /* PrintFruit.c in Sources */,
 				12754ECD29E0364300BD9965 /* Fruit.c in Sources */,
 				12754EB529E000FE00BD9965 /* DynamicArray.c in Sources */,
 				12754ED029E0365B00BD9965 /* CollisionFruit.c in Sources */,

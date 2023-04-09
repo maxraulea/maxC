@@ -10,6 +10,6 @@
 
 #include "DynamicArray.h"
 
-int IsCollisionWithWall(dArray *snake, int maxHeight, int maxWidth);
+int IsCollisionWithWall(dynamicArray *snake, int maxHeight, int maxWidth);
 
 #endif /* CollisionWall_h */

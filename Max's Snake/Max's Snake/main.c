@@ -57,9 +57,8 @@ int main(int argc, char* argv[]){
     SDL_RenderClear(Renderer);
     
     SDL_Event e;
-    dArray Snake;
-    initArray(&Snake
-              );
+    dynamicArray Snake;
+    InitArray(&Snake);
     Snake.block[0].x = WINDOW_WIDTH/2;
     Snake.block[0].y = WINDOW_HEIGHT/2;
     Snake.block[0].direction = 'u';

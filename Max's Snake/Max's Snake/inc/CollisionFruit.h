@@ -12,6 +12,6 @@
 #include "Fruit.h"
 #include "DynamicArray.h"
 
-int IsCollisionWithFruit(dArray *snake, Fruit fruit);
+int IsCollisionWithFruit(dynamicArray *snake, Fruit fruit);
 
 #endif /* CollisionFruit_h */
