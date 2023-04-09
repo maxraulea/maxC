@@ -16,9 +16,9 @@ typedef struct{
     int Lentgh;
 } dArray;
 
-void initArray(dArray *blocks, int Size);
+dArray* initArray(dArray *blocks);
 
-void AppendBlock(dArray *blocks);
+dArray* AppendBlock(dArray *blocks);
 
 /**TODO make a function to free allocated memory**/
 

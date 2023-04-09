@@ -16,12 +16,13 @@
 #include "DynamicArray.h"
 #include "GameOver.h"
 #include "Fruit.h"
+#include "CollisionFruit.h"
 
 
 int main(int argc, char* argv[]){
     
-    const int windowHeight = 800;
-    const int windowWidth = 600;
+    const int WINDOW_HEIGHT = 800;
+    const int WINDOW_WIDTH = 600;
     SDL_Rect snakePart;
     srand((unsigned int)time(NULL));
     
@@ -30,7 +31,7 @@ int main(int argc, char* argv[]){
         return 1;
     }
     
-    SDL_Window *View = SDL_CreateWindow("Game", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, windowWidth, windowHeight, 0);
+    SDL_Window *View = SDL_CreateWindow("Game", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WINDOW_WIDTH, WINDOW_HEIGHT, 0);
     if(!View){
         printf("sdl could not create window");
         return 1;
@@ -46,7 +47,7 @@ int main(int argc, char* argv[]){
     // we first call the start game function which will ask the user to press enter to start the game
     // if the user wants to play the game 0 is returned
     // if the user does not want to play or an error occured an integer != 0 is returned
-    if(StartGame(Renderer, windowWidth/2, windowHeight/2, 40) != 0){
+    if(StartGame(Renderer, WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 40) != 0){
         return 1;
     }
     
@@ -57,19 +58,20 @@ int main(int argc, char* argv[]){
     
     SDL_Event e;
     dArray Snake;
-    initArray(&Snake, 1);
-    Snake.block[0].x = windowWidth/2;
-    Snake.block[0].y = windowHeight/2;
+    initArray(&Snake
+              );
+    Snake.block[0].x = WINDOW_WIDTH/2;
+    Snake.block[0].y = WINDOW_HEIGHT/2;
     Snake.block[0].direction = 'u';
     
     Fruit fruit;
-    fruit = InitFruit(windowHeight, windowWidth);
+    fruit = InitFruit(WINDOW_HEIGHT, WINDOW_WIDTH);
     
     int quit = 0;
      
     while (!quit){
         if (Snake.Lentgh > 1){
-            for(int i = Snake.Lentgh; i > 0; i--){
+            for(int i = Snake.Lentgh - 1; i > 0; i--){
                 Snake.block[i] = Snake.block[i-1];
             }
         }
@@ -114,7 +116,7 @@ int main(int argc, char* argv[]){
                 break;
         }
         
-        if(IsGameOver(&Snake, windowHeight, windowWidth)){
+        if(IsGameOver(&Snake, WINDOW_HEIGHT, WINDOW_WIDTH)){
             quit = 1;
         }
         
@@ -131,14 +133,19 @@ int main(int argc, char* argv[]){
     
             SDL_RenderFillRect(Renderer, &snakePart);
         }
+        snakePart.x = fruit.x;
+        snakePart.y = fruit.y;
+        SDL_RenderFillRect(Renderer, &snakePart);
         
         SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
         SDL_RenderPresent(Renderer);
+        if(Snake.Lentgh < 99){
+            AppendBlock(&Snake);
+        }
      
-        if(10 > Snake.Lentgh){
-            for (int i = 0; i < 5; i++){
-                AppendBlock(&Snake);
-            }
+        if(IsCollisionWithFruit(&Snake, fruit)){
+            fruit =  InitFruit(WINDOW_HEIGHT, WINDOW_WIDTH);
+            AppendBlock(&Snake);
         }
     }
     

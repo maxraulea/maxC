@@ -9,26 +9,34 @@
 #include "DynamicArray.h"
 #include <stdlib.h>
 
+const int MEM_BATCH_SIZE = 32;
 
-void initArray(dArray *blocks, int Size){
-    blocks->block = malloc(Size  * sizeof(Block));
-    blocks->Size = Size;
+dArray* initArray(dArray *blocks){
+    if(!(blocks->block = malloc(MEM_BATCH_SIZE * sizeof(Block)))){
+        return NULL;
+    }
+    blocks->Size = MEM_BATCH_SIZE;
     blocks->Lentgh = 1;
+    return blocks;
 }
 
-void AppendBlock(dArray *blocks){
+dArray* AppendBlock(dArray *blocks){
     
     Block block;
     block.direction = '\0';
     block.x = 0;
     block.y = 0;
-    
-    blocks->Lentgh += 1;
-    if (blocks->Lentgh > blocks->Size){
-        blocks->Size *= 3/2 + 8;
-        blocks->block = realloc(blocks->block, (blocks->Size + 1) * sizeof(Block));
+        
+    if (blocks->Size - blocks->Lentgh - 1 < 1){
+        if(!(blocks->block = realloc(blocks->block, (blocks->Size + MEM_BATCH_SIZE) * sizeof(Block)))){
+            return NULL;
+        }
+        blocks->Size += MEM_BATCH_SIZE;
     }
+    
     blocks->block[blocks->Lentgh] = block;
+    blocks->Lentgh += 1;
+    return blocks;
 }
 
 
