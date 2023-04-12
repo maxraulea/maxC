@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		126D083D29E70BCB0043A50D /* PrintText.c in Sources */ = {isa = PBXBuildFile; fileRef = 126D083C29E70BCB0043A50D /* PrintText.c */; };
 		12754EB529E000FE00BD9965 /* DynamicArray.c in Sources */ = {isa = PBXBuildFile; fileRef = 12754EB429E000FE00BD9965 /* DynamicArray.c */; };
 		12754EB729E0011500BD9965 /* GameOver.c in Sources */ = {isa = PBXBuildFile; fileRef = 12754EB629E0011500BD9965 /* GameOver.c */; };
 		12754EB929E00B1600BD9965 /* StartScreen.c in Sources */ = {isa = PBXBuildFile; fileRef = 12754EB829E00B1600BD9965 /* StartScreen.c */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		126D083B29E70BCB0043A50D /* PrintText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrintText.h; sourceTree = "<group>"; };
+		126D083C29E70BCB0043A50D /* PrintText.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = PrintText.c; sourceTree = "<group>"; };
 		12754EB429E000FE00BD9965 /* DynamicArray.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = DynamicArray.c; sourceTree = "<group>"; };
 		12754EB629E0011500BD9965 /* GameOver.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GameOver.c; sourceTree = "<group>"; };
 		12754EB829E00B1600BD9965 /* StartScreen.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = StartScreen.c; sourceTree = "<group>"; };
@@ -68,6 +71,7 @@
 				12754EB629E0011500BD9965 /* GameOver.c */,
 				12754EB429E000FE00BD9965 /* DynamicArray.c */,
 				12754EC629E0308500BD9965 /* CollisionWall.c */,
+				126D083C29E70BCB0043A50D /* PrintText.c */,
 				12754ECF29E0365B00BD9965 /* CollisionFruit.c */,
 				12754ECC29E0364300BD9965 /* Fruit.c */,
 				12754EC929E030A200BD9965 /* CollisionSelf.c */,
@@ -94,6 +98,7 @@
 				12754EC329E0306000BD9965 /* CollisionWall.h */,
 				12754ECE29E0365B00BD9965 /* CollisionFruit.h */,
 				12754EC429E0307400BD9965 /* CollisionSelf.h */,
+				126D083B29E70BCB0043A50D /* PrintText.h */,
 				12754ECB29E0364300BD9965 /* Fruit.h */,
 			);
 			path = inc;
@@ -215,6 +220,7 @@
 				12754ECA29E030A200BD9965 /* CollisionSelf.c in Sources */,
 				12754ECD29E0364300BD9965 /* Fruit.c in Sources */,
 				12754EB529E000FE00BD9965 /* DynamicArray.c in Sources */,
+				126D083D29E70BCB0043A50D /* PrintText.c in Sources */,
 				12754ED029E0365B00BD9965 /* CollisionFruit.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

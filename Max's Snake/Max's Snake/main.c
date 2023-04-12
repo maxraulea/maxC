@@ -12,11 +12,13 @@
 #include <time.h>
 
 #include <SDL2/SDL.h>
+#include <SDL2_ttf/SDL_ttf.h>
 #include "StartScreen.h"
 #include "DynamicArray.h"
 #include "GameOver.h"
 #include "Fruit.h"
 #include "CollisionFruit.h"
+#include "PrintText.h"
 
 
 int main(int argc, char* argv[]){
@@ -24,6 +26,7 @@ int main(int argc, char* argv[]){
     const int WINDOW_HEIGHT = 800;
     const int WINDOW_WIDTH = 600;
     int score = 0;
+    char scoreString[5];
     SDL_Rect snakePart;
     srand((unsigned int)time(NULL));
     
@@ -44,6 +47,16 @@ int main(int argc, char* argv[]){
         return 1;
     }
     
+    if(TTF_Init() < 0){
+        return 1;
+    }
+    
+
+    TTF_Font *scoreFont = TTF_OpenFont("title.ttf", 30);
+    
+    if (!scoreFont){
+        return 1;
+    }
     // sdl has been initialised so the game can start!
     // we first call the start game function which will ask the user to press enter to start the game
     // if the user wants to play the game 0 is returned
@@ -70,6 +83,13 @@ int main(int argc, char* argv[]){
     int quit = 0;
      
     while (!quit){
+        
+        if(IsCollisionWithFruit(&Snake, fruit)){
+            fruit =  InitFruit(WINDOW_HEIGHT, WINDOW_WIDTH);
+            AppendBlock(&Snake);
+            score += 1;
+        }
+        
         if (Snake.Lentgh > 1){
             for(int i = Snake.Lentgh - 1; i > 0; i--){
                 Snake.block[i] = Snake.block[i-1];
@@ -127,9 +147,9 @@ int main(int argc, char* argv[]){
             quit = 1;
         }
         
-        usleep(50000);
+        usleep(50000 - score * 100);
         SDL_RenderClear(Renderer);
-        SDL_SetRenderDrawColor(Renderer, 255, 255, 255, 255);
+        SDL_SetRenderDrawColor(Renderer, 100, 255, 150, 255);
         for(int i = 0; i < Snake.Lentgh; i++){
             
             snakePart.h = 10;
@@ -141,17 +161,13 @@ int main(int argc, char* argv[]){
         }
         snakePart.x = fruit.x;
         snakePart.y = fruit.y;
+        SDL_SetRenderDrawColor(Renderer, 255, 0, 0, 255);
         SDL_RenderFillRect(Renderer, &snakePart);
         
         SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
+        SDL_itoa(score, scoreString, 10);
+        PrintText(Renderer, scoreFont, scoreString , 50, 50);
         SDL_RenderPresent(Renderer);
-     
-        if(IsCollisionWithFruit(&Snake, fruit)){
-            fruit =  InitFruit(WINDOW_HEIGHT, WINDOW_WIDTH);
-            AppendBlock(&Snake);
-            score += 1;
-            printf("%d", score);
-        }
     }
     
     SDL_DestroyWindow(View);

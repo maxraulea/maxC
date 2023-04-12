@@ -11,45 +11,23 @@
 #include <SDL2_ttf/SDL_ttf.h>
 
 #include "StartScreen.h"
+#include "PrintText.h"
 
 int StartGame(SDL_Renderer *Renderer, int xMiddle, int yMiddle, int Fontsize){
-    if(TTF_Init() < 0){
-        return 1;
-    }
-    
-    SDL_Color White = {255, 255, 255};
+
     TTF_Font *title = TTF_OpenFont("title.ttf", Fontsize);
     TTF_Font *description = TTF_OpenFont("description.ttf", Fontsize/2.5);
     if (!title || !description){
         return 1;
     }
     
-    SDL_Surface *titleText = TTF_RenderText_Solid(title, "SNAKE", White);
-    SDL_Texture *titleTexture = SDL_CreateTextureFromSurface(Renderer, titleText);
-    
-    SDL_Surface *descriptionText = TTF_RenderText_Solid(description, "PRESS ENTER TO START", White);
-    SDL_Texture *descriptionTexture = SDL_CreateTextureFromSurface(Renderer, descriptionText);
-    
-    SDL_Rect titleBox;
-        titleBox.h = titleText->h;
-        titleBox.w = titleText->w;
-        titleBox.x = xMiddle - titleText->w/2;
-        titleBox.y = yMiddle - titleText->h;
-    
-    SDL_Rect descriptionBox;
-        descriptionBox.h = descriptionText->h;
-        descriptionBox.w = descriptionText->w;
-        descriptionBox.x = xMiddle - descriptionText->w/2;
-        descriptionBox.y = yMiddle + 50;
-    
     SDL_Event e;
     int quit = 0;
-     
+    SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
     while (!quit){
         usleep(400000);
         SDL_RenderClear(Renderer);
-        SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
-        SDL_RenderCopy(Renderer, titleTexture, NULL, &titleBox);
+        PrintText(Renderer, title, "SNAKE", xMiddle, yMiddle);
         SDL_RenderPresent(Renderer);
         
         while (SDL_PollEvent(&e)){
@@ -59,7 +37,7 @@ int StartGame(SDL_Renderer *Renderer, int xMiddle, int yMiddle, int Fontsize){
             }
         }
         usleep(400000);
-        SDL_RenderCopy(Renderer, descriptionTexture, NULL, &descriptionBox);
+        PrintText(Renderer, description, "PRESS ENTER TO START", xMiddle, yMiddle + 50);
         SDL_RenderPresent(Renderer);
     }
     
