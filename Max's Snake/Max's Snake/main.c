@@ -23,6 +23,7 @@ int main(int argc, char* argv[]){
     
     const int WINDOW_HEIGHT = 800;
     const int WINDOW_WIDTH = 600;
+    int score = 0;
     SDL_Rect snakePart;
     srand((unsigned int)time(NULL));
     
@@ -76,19 +77,26 @@ int main(int argc, char* argv[]){
         }
         
         if (SDL_PollEvent(&e)){
-            printf("key pressed \n");
             switch (e.key.keysym.sym) {
                 case SDLK_a:
-                    Snake.block[0].direction = 'l';
+                    if(Snake.block[0].direction != 'r'){
+                        Snake.block[0].direction = 'l';
+                    }
                     break;
                 case SDLK_d:
-                    Snake.block[0].direction = 'r';
+                    if(Snake.block[0].direction != 'l'){
+                        Snake.block[0].direction = 'r';
+                    }
                     break;
                 case SDLK_w:
-                    Snake.block[0].direction = 'u';
+                    if(Snake.block[0].direction != 'd'){
+                        Snake.block[0].direction = 'u';
+                    }
                     break;
                 case SDLK_s:
-                    Snake.block[0].direction = 'd';
+                    if(Snake.block[0].direction != 'u'){
+                        Snake.block[0].direction = 'd';
+                    }
                     break;
                 case SDLK_ESCAPE:
                     quit = 1;
@@ -120,7 +128,6 @@ int main(int argc, char* argv[]){
         }
         
         usleep(50000);
-        printf("move snake \n");
         SDL_RenderClear(Renderer);
         SDL_SetRenderDrawColor(Renderer, 255, 255, 255, 255);
         for(int i = 0; i < Snake.Lentgh; i++){
@@ -138,13 +145,12 @@ int main(int argc, char* argv[]){
         
         SDL_SetRenderDrawColor(Renderer, 0, 0, 0, 0);
         SDL_RenderPresent(Renderer);
-        if(Snake.Lentgh < 99){
-            AppendBlock(&Snake);
-        }
      
         if(IsCollisionWithFruit(&Snake, fruit)){
             fruit =  InitFruit(WINDOW_HEIGHT, WINDOW_WIDTH);
             AppendBlock(&Snake);
+            score += 1;
+            printf("%d", score);
         }
     }
     
