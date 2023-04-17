@@ -28,6 +28,7 @@ int main(int argc, char* argv[]){
     int score = 0;
     char scoreString[5];
     SDL_Rect snakePart;
+    
     srand((unsigned int)time(NULL));
     
     if(SDL_Init(SDL_INIT_VIDEO) < 0 ){
