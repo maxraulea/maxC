@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		120B74D42A16663100F32832 /* Game.c in Sources */ = {isa = PBXBuildFile; fileRef = 120B74D32A16663100F32832 /* Game.c */; };
+		120B74D72A1673EB00F32832 /* GameOverScreen.c in Sources */ = {isa = PBXBuildFile; fileRef = 120B74D62A1673EB00F32832 /* GameOverScreen.c */; };
 		126D083D29E70BCB0043A50D /* PrintText.c in Sources */ = {isa = PBXBuildFile; fileRef = 126D083C29E70BCB0043A50D /* PrintText.c */; };
 		12754EB529E000FE00BD9965 /* DynamicArray.c in Sources */ = {isa = PBXBuildFile; fileRef = 12754EB429E000FE00BD9965 /* DynamicArray.c */; };
 		12754EB729E0011500BD9965 /* GameOver.c in Sources */ = {isa = PBXBuildFile; fileRef = 12754EB629E0011500BD9965 /* GameOver.c */; };
@@ -24,6 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		120B74D22A16663100F32832 /* Game.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		120B74D32A16663100F32832 /* Game.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Game.c; sourceTree = "<group>"; };
+		120B74D52A1673EB00F32832 /* GameOverScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameOverScreen.h; sourceTree = "<group>"; };
+		120B74D62A1673EB00F32832 /* GameOverScreen.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = GameOverScreen.c; sourceTree = "<group>"; };
 		126D083B29E70BCB0043A50D /* PrintText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrintText.h; sourceTree = "<group>"; };
 		126D083C29E70BCB0043A50D /* PrintText.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = PrintText.c; sourceTree = "<group>"; };
 		12754EB429E000FE00BD9965 /* DynamicArray.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = DynamicArray.c; sourceTree = "<group>"; };
@@ -75,6 +81,8 @@
 				12754ECF29E0365B00BD9965 /* CollisionFruit.c */,
 				12754ECC29E0364300BD9965 /* Fruit.c */,
 				12754EC929E030A200BD9965 /* CollisionSelf.c */,
+				120B74D32A16663100F32832 /* Game.c */,
+				120B74D62A1673EB00F32832 /* GameOverScreen.c */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -93,10 +101,12 @@
 			children = (
 				12B5BC1A29DC3871003F6087 /* Block.h */,
 				12B5BC1B29DEF54D003F6087 /* GameOver.h */,
+				120B74D52A1673EB00F32832 /* GameOverScreen.h */,
 				12B5BC1829DC35F7003F6087 /* DynamicArray.h */,
 				12D8B58629DA157B005DE5A1 /* StartScreen.h */,
 				12754EC329E0306000BD9965 /* CollisionWall.h */,
 				12754ECE29E0365B00BD9965 /* CollisionFruit.h */,
+				120B74D22A16663100F32832 /* Game.h */,
 				12754EC429E0307400BD9965 /* CollisionSelf.h */,
 				126D083B29E70BCB0043A50D /* PrintText.h */,
 				12754ECB29E0364300BD9965 /* Fruit.h */,
@@ -213,11 +223,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				120B74D72A1673EB00F32832 /* GameOverScreen.c in Sources */,
 				12754EB929E00B1600BD9965 /* StartScreen.c in Sources */,
 				12754EC729E0308500BD9965 /* CollisionWall.c in Sources */,
 				12D8B57E29DA0BB3005DE5A1 /* main.c in Sources */,
 				12754EB729E0011500BD9965 /* GameOver.c in Sources */,
 				12754ECA29E030A200BD9965 /* CollisionSelf.c in Sources */,
+				120B74D42A16663100F32832 /* Game.c in Sources */,
 				12754ECD29E0364300BD9965 /* Fruit.c in Sources */,
 				12754EB529E000FE00BD9965 /* DynamicArray.c in Sources */,
 				126D083D29E70BCB0043A50D /* PrintText.c in Sources */,
@@ -343,6 +355,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Max's Snake/Max_s_Snake.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -374,6 +387,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Max's Snake/Max_s_Snake.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;

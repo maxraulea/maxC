@@ -20,6 +20,6 @@ dynamicArray* InitArray(dynamicArray *blocks);
 
 dynamicArray* AppendBlock(dynamicArray *blocks);
 
-/**TODO make a function to free allocated memory**/
+/**TODO: make a function to free allocated memory**/
 
 #endif /* DynamicArray_h */
