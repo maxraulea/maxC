@@ -20,12 +20,15 @@
 #include "CollisionFruit.h"
 #include "PrintText.h"
 #include "Game.h"
+#include "DataBase.h"
+#include <sqlite3.h>
 
 
 int main(int argc, char* argv[]){
     
     const int WINDOW_HEIGHT = 800;
     const int WINDOW_WIDTH = 600;
+    char currentPlayer[32];
     int score;
 
     srand((unsigned int)time(NULL));
@@ -50,12 +53,12 @@ int main(int argc, char* argv[]){
     if(TTF_Init() < 0){
         return 1;
     }
-    
+        
     // sdl has been initialised so the game can start!
     // we first call the start game function which will ask the user to press enter to start the game
     // if the user wants to play the game 0 is returned
     // if the user does not want to play or an error occured an integer != 0 is returned
-    if(StartGame(Renderer, WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 40) != 0){
+    if(StartGame(Renderer, WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 40, currentPlayer) != 0){
         return 1;
     }
     
@@ -63,7 +66,8 @@ int main(int argc, char* argv[]){
     score = InitGame(Renderer, WINDOW_HEIGHT, WINDOW_WIDTH);
     
     if(score >= 0){
-        // save the score in save file or db
+        // save the score in db
+        InsertScore(score, currentPlayer);
     }
     
     

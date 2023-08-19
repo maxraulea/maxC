@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		120B74D42A16663100F32832 /* Game.c in Sources */ = {isa = PBXBuildFile; fileRef = 120B74D32A16663100F32832 /* Game.c */; };
 		120B74D72A1673EB00F32832 /* GameOverScreen.c in Sources */ = {isa = PBXBuildFile; fileRef = 120B74D62A1673EB00F32832 /* GameOverScreen.c */; };
+		121BBD162A9103D200AAA11E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 121BBD152A9103D200AAA11E /* libsqlite3.tbd */; };
+		121BBD242A91383F00AAA11E /* PressStart2P-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 121BBD232A91383F00AAA11E /* PressStart2P-Regular.ttf */; };
+		121BBD272A91455B00AAA11E /* DataBase.c in Sources */ = {isa = PBXBuildFile; fileRef = 121BBD262A91455B00AAA11E /* DataBase.c */; };
 		126D083D29E70BCB0043A50D /* PrintText.c in Sources */ = {isa = PBXBuildFile; fileRef = 126D083C29E70BCB0043A50D /* PrintText.c */; };
 		12754EB529E000FE00BD9965 /* DynamicArray.c in Sources */ = {isa = PBXBuildFile; fileRef = 12754EB429E000FE00BD9965 /* DynamicArray.c */; };
 		12754EB729E0011500BD9965 /* GameOver.c in Sources */ = {isa = PBXBuildFile; fileRef = 12754EB629E0011500BD9965 /* GameOver.c */; };
@@ -30,6 +33,10 @@
 		120B74D32A16663100F32832 /* Game.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = Game.c; sourceTree = "<group>"; };
 		120B74D52A1673EB00F32832 /* GameOverScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameOverScreen.h; sourceTree = "<group>"; };
 		120B74D62A1673EB00F32832 /* GameOverScreen.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = GameOverScreen.c; sourceTree = "<group>"; };
+		121BBD152A9103D200AAA11E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		121BBD232A91383F00AAA11E /* PressStart2P-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PressStart2P-Regular.ttf"; sourceTree = "<group>"; };
+		121BBD252A91455B00AAA11E /* DataBase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataBase.h; sourceTree = "<group>"; };
+		121BBD262A91455B00AAA11E /* DataBase.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = DataBase.c; sourceTree = "<group>"; };
 		126D083B29E70BCB0043A50D /* PrintText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrintText.h; sourceTree = "<group>"; };
 		126D083C29E70BCB0043A50D /* PrintText.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = PrintText.c; sourceTree = "<group>"; };
 		12754EB429E000FE00BD9965 /* DynamicArray.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = DynamicArray.c; sourceTree = "<group>"; };
@@ -62,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				121BBD162A9103D200AAA11E /* libsqlite3.tbd in Frameworks */,
 				12D8B58529DA1439005DE5A1 /* SDL2_ttf.framework in Frameworks */,
 				12D8B58329DA0C97005DE5A1 /* SDL2.framework in Frameworks */,
 			);
@@ -83,6 +91,7 @@
 				12754EC929E030A200BD9965 /* CollisionSelf.c */,
 				120B74D32A16663100F32832 /* Game.c */,
 				120B74D62A1673EB00F32832 /* GameOverScreen.c */,
+				121BBD262A91455B00AAA11E /* DataBase.c */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -91,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				1295ED7029DB5C44005BB82A /* title.ttf */,
+				121BBD232A91383F00AAA11E /* PressStart2P-Regular.ttf */,
 				1295ED6F29DB5C44005BB82A /* description.ttf */,
 			);
 			path = fonts;
@@ -103,6 +113,7 @@
 				12B5BC1B29DEF54D003F6087 /* GameOver.h */,
 				120B74D52A1673EB00F32832 /* GameOverScreen.h */,
 				12B5BC1829DC35F7003F6087 /* DynamicArray.h */,
+				121BBD252A91455B00AAA11E /* DataBase.h */,
 				12D8B58629DA157B005DE5A1 /* StartScreen.h */,
 				12754EC329E0306000BD9965 /* CollisionWall.h */,
 				12754ECE29E0365B00BD9965 /* CollisionFruit.h */,
@@ -147,6 +158,7 @@
 		12D8B58129DA0C97005DE5A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				121BBD152A9103D200AAA11E /* libsqlite3.tbd */,
 				12D8B58429DA1439005DE5A1 /* SDL2_ttf.framework */,
 				12D8B58229DA0C97005DE5A1 /* SDL2.framework */,
 			);
@@ -210,6 +222,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				121BBD242A91383F00AAA11E /* PressStart2P-Regular.ttf in Resources */,
 				12D8B57129DA0B8B005DE5A1 /* Assets.xcassets in Resources */,
 				1295ED7129DB5C44005BB82A /* description.ttf in Resources */,
 				1295ED7229DB5C44005BB82A /* title.ttf in Resources */,
@@ -223,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				121BBD272A91455B00AAA11E /* DataBase.c in Sources */,
 				120B74D72A1673EB00F32832 /* GameOverScreen.c in Sources */,
 				12754EB929E00B1600BD9965 /* StartScreen.c in Sources */,
 				12754EC729E0308500BD9965 /* CollisionWall.c in Sources */,

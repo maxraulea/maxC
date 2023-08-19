@@ -7,8 +7,7 @@
 
 #include "CollisionSelf.h"
 
-int IsCollisionWithSelf(dynamicArray
-                        *snake){
+int IsCollisionWithSelf(dynamicArray *snake){
     
     for (int i = 1; i < snake->Lentgh; i++){
         if (snake->block[0].x == snake->block[i].x && snake->block[0].y == snake->block[i].y){
